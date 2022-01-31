@@ -1,3 +1,14 @@
-.App{
-  color: red;
-}
+@import "./Modules/variables";
+
+/*
+  1) 1163 by 163 -> Output box with IP ADD/Location/Timezone/ISP (279)
+  padding-left: 31, padding-top: 36
+
+  2) Search Input -> 496 by 59
+  padding-left: 25, padding-top/bottom: 23
+
+  3) Search button -> 60 by 59
+  Button Icon Size: w-11 h-auto
+
+  4) blue bg height: 280px
+*/
