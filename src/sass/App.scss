@@ -74,6 +74,10 @@
       &:not(:last-child){
         border-right: 1px solid red;
       }
+
+      .search-result, .title{
+        max-width: 190px;
+      }
     }
   }
 }
