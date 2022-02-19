@@ -58,12 +58,15 @@
   max-width: 1163px;
   margin: 0 auto;
   background: lightblue;
-  height: 163px;
   border-radius: 16px;
   -webkit-border-radius: 16px;
   -moz-border-radius: 16px;
   -ms-border-radius: 16px;
   -o-border-radius: 16px;
+
+  @media (min-width: 768px){
+    height: 163px;
+  }
 
   & > .row{
     min-height: 100%;
@@ -79,5 +82,23 @@
         max-width: 190px;
       }
     }
+  }
+}
+
+.content-container{
+  top:0;
+  z-index: 99999;
+}
+
+// ip-tracker
+
+#ip-tracker{
+  .blue-bg{
+    height: 280px;
+  }
+
+  .map-container{
+    height: calc(100vh - 280px);
+    // background: red;
   }
 }

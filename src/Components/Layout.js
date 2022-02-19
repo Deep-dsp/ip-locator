@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Layout = () => {
+const Layout = ( { setLat, setLng} ) => {
 
 
    const [ enteredValue, setEnteredvalue ] = useState("");
@@ -18,19 +18,10 @@ const Layout = () => {
 
 
    useEffect(()=>{
-      // const getCurrentIP = async () => {
-      //    const res = await axios.get('https://geolocation-db.com/json/');
-      //    return res.data.IPv4;
-      // }
-      // console.log("Hello", getCurrentIP())
-      // api(getCurrentIP())
+      console.log("UseEffect");
       ( async () => {
          const res = await axios.get('https://geolocation-db.com/json/');
-         console.log(res);
          api(res.data.IPv4);
-         // console.log(res);
-         // return res.data.IPv4;
-         
       })();
    }, [])
 
@@ -42,21 +33,22 @@ const Layout = () => {
             ipAddress: ip
          }
       });
-      console.log(data);
+      setLat(data.data.location.lat);
+      setLng(data.data.location.lng);
       setSearchResults(data.data);
 
    }
 
 
   return (
-      <div className="content-container">
+      <div className="content-container position-absolute w-100">
 
          <div className="app-title text-center">
             <h1>IP Address Tracker</h1>
          </div>
 
          <div className="form-container d-flex justify-content-center">
-
+         {/* onSubmit={ onSubmitForm } */}
             <form className="d-flex align-item-center" onSubmit={ onSubmitForm }>
                <label className="d-none">Ip address or domain</label>
                <input className="ip-input" type="text" onChange={(e) => setEnteredvalue(e.target.value)} />
