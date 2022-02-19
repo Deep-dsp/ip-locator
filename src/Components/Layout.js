@@ -1,25 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Layout = () => {
 
-   // const currentIP = fetch("https://api.ipify.org/?format=json").then( results => results.json()).then( data => console.log(data.ip));
 
    const [ enteredValue, setEnteredvalue ] = useState("");
    const [ searchResults, setSearchResults ] = useState("");
 
-   const onSubmitForm = async (e) => {
+   const onSubmitForm = (e) => {
+
       e.preventDefault();
+      if(enteredValue){
+         api(enteredValue)
+      }
       
+   }
+
+
+   useEffect(()=>{
+      // const getCurrentIP = async () => {
+      //    const res = await axios.get('https://geolocation-db.com/json/');
+      //    return res.data.IPv4;
+      // }
+      // console.log("Hello", getCurrentIP())
+      // api(getCurrentIP())
+      ( async () => {
+         const res = await axios.get('https://geolocation-db.com/json/');
+         console.log(res);
+         api(res.data.IPv4);
+         // console.log(res);
+         // return res.data.IPv4;
+         
+      })();
+   }, [])
+
+   async function api(ip){
+      console.log(ip)
       const data = await axios.get("https://geo.ipify.org/api/v1/", {
          params:{
             apiKey: 'at_POgsJyOItI1DQF68WTu4A9zROtWQw',
-            ipAddress: enteredValue
+            ipAddress: ip
          }
       });
-
+      console.log(data);
       setSearchResults(data.data);
-      console.log(data.data);
+
    }
 
 
