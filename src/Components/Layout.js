@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Layout = ( { setLat, setLng} ) => {
+const Layout = ( { setPosition} ) => {
 
 
    const [ enteredValue, setEnteredvalue ] = useState("");
@@ -33,8 +33,8 @@ const Layout = ( { setLat, setLng} ) => {
             ipAddress: ip
          }
       });
-      setLat(data.data.location.lat);
-      setLng(data.data.location.lng);
+   
+      setPosition([data.data.location.lat, data.data.location.lng]);
       setSearchResults(data.data);
 
    }
@@ -48,7 +48,7 @@ const Layout = ( { setLat, setLng} ) => {
          </div>
 
          <div className="form-container d-flex justify-content-center">
-         {/* onSubmit={ onSubmitForm } */}
+         
             <form className="d-flex align-item-center" onSubmit={ onSubmitForm }>
                <label className="d-none">Ip address or domain</label>
                <input className="ip-input" type="text" onChange={(e) => setEnteredvalue(e.target.value)} />
