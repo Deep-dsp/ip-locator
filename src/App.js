@@ -52,7 +52,7 @@ function App() {
           />
           <Marker position={position} icon={myIcon}>
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              {searchResults.isp}
             </Popup>
           </Marker>
 

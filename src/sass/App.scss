@@ -78,7 +78,7 @@
   }
 
   @media (max-width: 767px){
-    height: 293px;
+    min-height: 293px;
     padding: 25px 0;
   }
 
@@ -130,7 +130,11 @@
 
 // Map +/-
 .leaflet-control-container > .leaflet-top:first-child{
-  z-index: 999999;
+  display: none;
+  @media (min-width: 1250px){
+    display: block;
+    z-index: 999999;
+  }
 }
 
 // Globe Container
@@ -151,3 +155,7 @@
   color: $med-grey;
 }
 
+// Map Pop Close Icon
+.leaflet-container a.leaflet-popup-close-button{
+  color: #453e99 !important;
+}

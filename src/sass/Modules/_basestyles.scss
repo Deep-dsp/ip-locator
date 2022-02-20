@@ -16,6 +16,12 @@
    }
 }
 
+.leaflet-popup-content{
+   font-family: $roboto;
+   font-size: 0.85rem;
+   font-weight: bold;
+}
+
 .search-result{
    font-family: $roboto;
    font-size: 1.5rem;
