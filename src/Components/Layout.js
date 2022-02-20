@@ -7,6 +7,8 @@ const Layout = ( { setPosition, setSubmit, searchResults, setSearchResults } ) =
    const [ enteredValue, setEnteredvalue ] = useState("");
    // const [ searchResults, setSearchResults ] = useState("");
 
+   const regex = "\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b";
+
    const onSubmitForm = (e) => {
 
       e.preventDefault();
@@ -54,12 +56,13 @@ const Layout = ( { setPosition, setSubmit, searchResults, setSearchResults } ) =
                <label className="d-none">Ip address or domain</label>
                <input 
                   className="ip-input" 
-                  type="text" 
+                  type="text"
+                  aria-label="IP address input" 
                   onChange={(e) => setEnteredvalue(e.target.value)} 
                   placeholder="Search for any IP address"
                />
-               <button type="submit">
-                  <img src="/images/icon-arrow.svg"/>
+               <button type="submit" aria-label="Button to Submit Form">
+                  <img src="/images/icon-arrow.svg" alt="Right Arrow Icon"/>
                </button>
             </form>
 
