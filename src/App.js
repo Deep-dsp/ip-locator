@@ -12,6 +12,7 @@ function App() {
 
   const [position, setPosition] = useState("");
   const [map, setMap] = useState("");
+  const [ submit, setSubmit] = useState(false);
 
   const myStyle = {
     backgroundImage: "url(/images/pattern-bg.png)",
@@ -27,7 +28,7 @@ function App() {
     popupAnchor: [0, -41],
   });
 
-  if(position){
+  if(position && submit){
     map.flyTo(position, 13, {
       duration: 2
     })
@@ -36,7 +37,7 @@ function App() {
   return (
     <div className="ip-tracker position-relative" id="ip-tracker">
 
-      <Layout setPosition={setPosition} />
+      <Layout setPosition={setPosition} setSubmit={setSubmit} />
 
       <div className="blue-bg" style={myStyle}></div>
 

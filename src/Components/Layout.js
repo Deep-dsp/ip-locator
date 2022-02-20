@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Layout = ( { setPosition} ) => {
+const Layout = ( { setPosition, setSubmit } ) => {
 
 
    const [ enteredValue, setEnteredvalue ] = useState("");
@@ -11,6 +11,7 @@ const Layout = ( { setPosition} ) => {
 
       e.preventDefault();
       if(enteredValue){
+         setSubmit(true);
          api(enteredValue)
       }
       
@@ -18,7 +19,7 @@ const Layout = ( { setPosition} ) => {
 
 
    useEffect(()=>{
-      console.log("UseEffect");
+      setSubmit(false);
       ( async () => {
          const res = await axios.get('https://geolocation-db.com/json/');
          api(res.data.IPv4);
