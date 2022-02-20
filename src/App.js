@@ -13,6 +13,7 @@ function App() {
   const [position, setPosition] = useState("");
   const [map, setMap] = useState("");
   const [ submit, setSubmit] = useState(false);
+  const [ searchResults, setSearchResults ] = useState("");
 
   const myStyle = {
     backgroundImage: "url(/images/pattern-bg.png)",
@@ -20,14 +21,16 @@ function App() {
     backgroundSize: "cover",
   };
 
+
   var myIcon = L.icon({
     iconUrl:
       "/images/icon-location.svg",
-    iconSize: [25, 41],
+    iconSize: [46, 54],
     iconAnchor: [12.5, 41],
     popupAnchor: [0, -41],
   });
 
+  // Fly only if position is available and form is submitted
   if(position && submit){
     map.flyTo(position, 13, {
       duration: 2
@@ -37,7 +40,7 @@ function App() {
   return (
     <div className="ip-tracker position-relative" id="ip-tracker">
 
-      <Layout setPosition={setPosition} setSubmit={setSubmit} />
+      <Layout setPosition={setPosition} setSubmit={setSubmit} searchResults={searchResults} setSearchResults={setSearchResults} />
 
       <div className="blue-bg" style={myStyle}></div>
 

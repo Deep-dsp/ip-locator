@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Layout = ( { setPosition, setSubmit } ) => {
+const Layout = ( { setPosition, setSubmit, searchResults, setSearchResults } ) => {
 
 
    const [ enteredValue, setEnteredvalue ] = useState("");
-   const [ searchResults, setSearchResults ] = useState("");
+   // const [ searchResults, setSearchResults ] = useState("");
 
    const onSubmitForm = (e) => {
 
@@ -27,7 +27,7 @@ const Layout = ( { setPosition, setSubmit } ) => {
    }, [])
 
    async function api(ip){
-      console.log(ip)
+      
       const data = await axios.get("https://geo.ipify.org/api/v1/", {
          params:{
             apiKey: 'at_POgsJyOItI1DQF68WTu4A9zROtWQw',
@@ -45,14 +45,19 @@ const Layout = ( { setPosition, setSubmit } ) => {
       <div className="content-container position-absolute w-100">
 
          <div className="app-title text-center">
-            <h1>IP Address Tracker</h1>
+            <h1 className="page-title white">IP Address Tracker</h1>
          </div>
 
-         <div className="form-container d-flex justify-content-center">
+         <div className="mx-3 mx-sm-0 form-container d-flex justify-content-center">
          
             <form className="d-flex align-item-center" onSubmit={ onSubmitForm }>
                <label className="d-none">Ip address or domain</label>
-               <input className="ip-input" type="text" onChange={(e) => setEnteredvalue(e.target.value)} />
+               <input 
+                  className="ip-input" 
+                  type="text" 
+                  onChange={(e) => setEnteredvalue(e.target.value)} 
+                  placeholder="Search for any IP address"
+               />
                <button type="submit">
                   <img src="/images/icon-arrow.svg"/>
                </button>
@@ -60,27 +65,27 @@ const Layout = ( { setPosition, setSubmit } ) => {
 
          </div>
 
-         <div className="display-block mt-5">
-            <div className="row align-items-center">
+         <div className="display-block mx-3 mx-xl-auto mt-4 mt-md-5">
+            <div className="row">
 
                <div className="col-md-3">
-                  <p className="title">IP ADDRESS</p>
-                  <p className="search-result">{ searchResults ? searchResults.ip : "IP"}</p>
+                  <p className="title text-center text-md-start small-title mb-0 med-grey">IP ADDRESS</p>
+                  <p className="search-result text-center text-md-start mb-4 dark-grey">{ searchResults ? searchResults.ip : "IP"}</p>
                </div>
 
                <div className="col-md-3">
-                  <p className="title">LOCATION</p>
-                  <p className="search-result">{ searchResults ? searchResults.location.city + "," + searchResults.location.country + "," + searchResults.location.postalCode : "location"}</p>
+                  <p className="title text-center text-md-start small-title mb-0 med-grey">LOCATION</p>
+                  <p className="search-result text-center text-md-start mb-4 dark-grey">{ searchResults ? searchResults.location.city + "," + searchResults.location.country + "," + searchResults.location.postalCode : "location"}</p>
                </div>
 
                <div className="col-md-3">
-                  <p className="title">TIMEZONE</p>
-                  <p className="search-result">{ searchResults ? searchResults.location.timezone : "timezone" }</p>
+                  <p className="title text-center text-md-start small-title mb-0 med-grey">TIMEZONE</p>
+                  <p className="search-result text-center text-md-start mb-4 dark-grey">{ searchResults ? searchResults.location.timezone : "timezone" }</p>
                </div>
 
                <div className="col-md-3">
-                  <p className="title">ISP</p>
-                  <p className="search-result">{ searchResults ? searchResults.isp : "isp" }</p>
+                  <p className="title text-center text-md-start small-title mb-0 med-grey">ISP</p>
+                  <p className="search-result text-center text-md-start mb-0 dark-grey">{ searchResults ? searchResults.isp : "isp" }</p>
                </div>
 
             </div>

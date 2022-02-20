@@ -1,0 +1,27 @@
+.page-title{
+   font-family: $roboto;
+   font-size: $font-size;
+   letter-spacing: 1px;
+}
+
+.small-title{
+   font-family: $roboto;
+   font-size: 0.95rem;
+   text-transform: uppercase;
+   font-weight: bold;
+   letter-spacing: 2px;
+
+   @media (max-width: 768px){
+      font-size: 0.85rem;
+   }
+}
+
+.search-result{
+   font-family: $roboto;
+   font-size: 1.5rem;
+   font-weight: bold;
+
+   @media (max-width: 768px){
+      font-size: 1rem;           
+   }
+}

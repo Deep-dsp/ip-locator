@@ -12,3 +12,17 @@ $med-grey: hsl(0, 0%, 59%);
 
 // font size
 $font-size: 1.125rem; //18px
+
+
+// Color Class
+.white{
+   color: #fff;
+}
+
+.dark-grey{
+   color: $dark-grey;
+}
+
+.med-grey{
+   color: $med-grey;
+}
