@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 function App() {
 
   const [position, setPosition] = useState("");
+  const [ enteredValue, setEnteredvalue ] = useState("");
   const [map, setMap] = useState("");
   const [ submit, setSubmit] = useState(false);
   const [ searchResults, setSearchResults ] = useState("");
@@ -40,7 +41,7 @@ function App() {
   return (
     <div className="ip-tracker position-relative" id="ip-tracker">
 
-      <Layout setPosition={setPosition} setSubmit={setSubmit} searchResults={searchResults} setSearchResults={setSearchResults} />
+      <Layout setPosition={setPosition} setSubmit={setSubmit} searchResults={searchResults} setSearchResults={setSearchResults} enteredValue={enteredValue} setEnteredvalue={setEnteredvalue} />
 
       <div className="blue-bg" style={myStyle}></div>
 

@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Layout = ( { setPosition, setSubmit, searchResults, setSearchResults } ) => {
+const Layout = ( { setPosition, submit, setSubmit, searchResults, setSearchResults, enteredValue, setEnteredvalue } ) => {
 
 
-   const [ enteredValue, setEnteredvalue ] = useState("");
+   // const [ enteredValue, setEnteredvalue ] = useState("");
+   const [ isTyping, setIsTyping ] = useState(false);
+
    // const [ searchResults, setSearchResults ] = useState("");
 
-   const regex = "\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b";
+   const regex = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
 
    const onSubmitForm = (e) => {
 
       e.preventDefault();
       if(enteredValue){
          setSubmit(true);
-         api(enteredValue)
+         // api(enteredValue)
+         if(enteredValue.match(regex)){
+            api(enteredValue);
+         }
       }
       
    }
@@ -27,6 +32,7 @@ const Layout = ( { setPosition, setSubmit, searchResults, setSearchResults } ) =
          api(res.data.IPv4);
       })();
    }, [])
+
 
    async function api(ip){
       
@@ -67,6 +73,12 @@ const Layout = ( { setPosition, setSubmit, searchResults, setSearchResults } ) =
             </form>
 
          </div>
+
+         { !enteredValue.match(regex) ?
+            <div className="text-center position-relative" id="error-msg">
+               <label className="small-title white text-capitalize">Entered Value is not Valid IP</label>
+            </div> : ''
+         }
 
          <div className="display-block mx-3 mx-xl-auto mt-4 mt-md-5">
             <div className="row">
