@@ -41,7 +41,7 @@ function App() {
   return (
     <div className="ip-tracker position-relative" id="ip-tracker">
 
-      <Layout setPosition={setPosition} setSubmit={setSubmit} searchResults={searchResults} setSearchResults={setSearchResults} enteredValue={enteredValue} setEnteredvalue={setEnteredvalue} />
+      <Layout setPosition={setPosition} submit={submit} setSubmit={setSubmit} searchResults={searchResults} setSearchResults={setSearchResults} enteredValue={enteredValue} setEnteredvalue={setEnteredvalue} />
 
       <div className="blue-bg" style={myStyle}></div>
 
