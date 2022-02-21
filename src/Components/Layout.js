@@ -74,10 +74,10 @@ const Layout = ( { setPosition, submit, setSubmit, searchResults, setSearchResul
 
          </div>
 
-         { !enteredValue.match(regex) ?
+         { enteredValue ? (!enteredValue.match(regex) ?
             <div className="text-center position-relative" id="error-msg">
                <label className="small-title white text-capitalize">Entered Value is not Valid IP</label>
-            </div> : ''
+            </div> : '') : ''
          }
 
          <div className="display-block mx-3 mx-xl-auto mt-4 mt-md-5">
